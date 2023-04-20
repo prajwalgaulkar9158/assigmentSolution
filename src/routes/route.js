@@ -21,6 +21,8 @@ lowercase.lowercase("THIS IS LOWER CASE")
 
    console.log(lodash.chunk(months,4));
    console.log(lodash.tail([1,3,5,7,9,11,13,15,17,19]));
+   console.log(lodash.union([2,3],[4,5],[2,5],[3,7],[9,7]))
+   console.log(lodash.fromPairs( [["one key","Onevalue"],["two key","Twokey"]]));
     res.send('This should be working!')
     
 });
