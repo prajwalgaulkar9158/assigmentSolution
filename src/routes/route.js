@@ -4,6 +4,23 @@ const router = express.Router();
 const commonFile = require('./common')
 const myUnderscore = require('underscore')
 
+let Movies=["Rang De Basanti","the shining","lords of ring","Batman begins"]
+
+const films=[ {
+    "id": 1,
+    name: "The Shining"
+   }, {
+    "id": 2,
+    name: "Incendies"
+   }, {
+    "id": 3,
+    name: "Rang de Basanti"
+   }, {
+    "id": 4,
+    name: "“Finding Nemo”"
+   }]
+   
+
 router.get('/test-me', function (req, res) {
     res.send('This should be working!')
 });
@@ -48,5 +65,30 @@ router.get('/students/:studentName', function(req, res) {
     res.send('student data')
 })
 
+router.get('/movies',function(req,res){
+    res.send(Movies)
+})
 
-module.exports = router;
+router.get('/movies/:indexNumber',function(req,res){
+let movieOfIndex= Movies[req.params.indexNumber]
+let indexOfmovies=req.params.indexNumber
+if(indexOfmovies>(Movies.length-1)||indexOfmovies<0){
+    res.send('please type valid index ')
+}else{
+
+    
+    res.send(movieOfIndex)
+}
+})
+
+router.get('/film',function(req,res){
+    res.send(films)
+})
+
+router.get ('/film/:filmId',function(req,res){
+    let filmId=(req.params.filmId)
+    let a=( films.filter(ele=>(ele.id==filmId)))
+res.send( a.length==0?"film of this id doesn't exist":a[0])
+})
+
+module.exports = router; 
