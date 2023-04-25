@@ -1,4 +1,5 @@
 const express = require('express');
+
 const { route } = require('express/lib/application');
 const router = express.Router();
 const commonFile = require('./common')
@@ -91,4 +92,39 @@ router.get ('/film/:filmId',function(req,res){
 res.send( a.length==0?"film of this id doesn't exist":a[0])
 })
 
+router.get('/sol1',function(req,res){
+    //find missing number of 
+    let arr=[1,2,3,5,6,7]
+    let  n=7
+    let missingNumber
+    let sumOfNumberIs=n*(n+1)/2
+    let count=0
+    for(let i=0;i<arr.length;i++){
+        count=count+arr[i]   
+    }
+    missingNumber= sumOfNumberIs-count
+    res.send(  { data: missingNumber  }  );
+})
+
+router.get('/sol2',function(req,res){
+    //find missing number of 
+    let arr=[33,34,35,37,38]
+    let  first=arr[0]
+    let last=arr[arr.length-1]
+    let n = arr.length+1
+    let missingNumber
+    let sumOfNumberIs=n*(first + last)/2
+    let count=0
+    for(let i=0;i<arr.length;i++){
+        count=count+arr[i]   
+    }
+    missingNumber= sumOfNumberIs-count
+    res.send(  { data: missingNumber  }  );
+})
+
+
+
 module.exports = router; 
+
+
+
