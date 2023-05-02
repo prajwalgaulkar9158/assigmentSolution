@@ -12,7 +12,7 @@ router.post("/createUser", UserController.createUser  )
 
 router.get("/getUsersData", UserController.getUsersData)
 
-router.post("/createBook", BookController.createBook  )
+// router.post("/createBook", BookController.createBook  )
 
 router.get("/getBooksData", BookController.getBooksData)
 
@@ -38,4 +38,20 @@ router.get("/dateManipulations", function (req, res) {
     res.send({ msg: "all good"})
 })
 
-module.exports = router;
+
+
+
+//===================================================//
+// assgment book& author
+const authorController =require('../controllers/authorController');
+const book2Controller = require('../controllers/bookTwoController');
+
+router.post('/createAuthorBook',authorController.createAuthorBook)
+router.post('/createBook',book2Controller.createbook)
+
+router.get('/bookOfChetan',authorController.bookOfChetan)
+router.get('/authorOfTwoState',authorController.authorOfTwoState)
+router.get('/costBetween',authorController.costBetween)
+
+
+module.exports = router
