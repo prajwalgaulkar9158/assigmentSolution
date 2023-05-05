@@ -13,9 +13,21 @@ router.get("/test-me", function (req, res) {
 
 
 router.post("/createBook", BookController.createBook  )
+//=========================//
+
+
+//create a middleware using app.use(functionName) so that this piece of code gets called everytime any api is called
+ 
+
+ 
 
 
 
+
+
+router.get('/mildelwear1', function(req,res){
+    res.send({msg:"this is handler"})
+})
 
 // router.post("/createUser", UserController.createUser  )
 // router.get("/getUsersData", UserController.getUsersData)
@@ -55,7 +67,6 @@ router.get("/basicRoute", commonMW.mid1, commonMW.mid2, commonMW.mid3, commonMW.
 // router.get("/basicRoute2", commonMW.mid1, UserController.basicCode2)
 // router.get("/basicRoute3", commonMW.mid2, UserController.basicCode3)
 // router.get("/basicRoute4", commonMW.mid1, commonMW.mid4, UserController.basicCode4)
-
 
 
 

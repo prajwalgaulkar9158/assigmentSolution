@@ -3,12 +3,14 @@ const bodyParser = require('body-parser');
 const route = require('./routes/route.js');
 const { default: mongoose } = require('mongoose');
 const app = express();
+const moment =require("moment")
+// const assignmentMW=require("./routes/route.js")
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-mongoose.connect("mongodb+srv://functionup-cohort:G0Loxqc9wFEGyEeJ@cluster0.rzotr.mongodb.net/Pritesh8769811-DB?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://prajwalgaulkar78717:bXvJ3nSxWJSUIcpZ@cluster0.vdcbqqv.mongodb.net/test", {
     useNewUrlParser: true
 })
 .then( () => console.log("MongoDb is connected"))
@@ -20,6 +22,30 @@ app.use (
         next();
   }
   );
+const assignmentMW= function (req, res, next) {
+        var currentdate = new Date(); 
+        var datetime =  currentdate.getDate() + " "
+                        + (currentdate.getMonth()+1)  + " " 
+                        + currentdate.getFullYear() + "  "  
+                        + currentdate.getHours() + ":"  
+                        + currentdate.getMinutes() + ":" 
+                        + currentdate.getSeconds();
+     
+        let ip= req.ip
+        let url= req.originalUrl
+        console.log(`${datetime}  ${ip}  ${url}`)
+        next()    
+}
+
+// const assignmentMW= function (req,res,next){
+//     var time = moment().format('YYYY-MM-DD , h:mm:ss a')
+//     var ip =req.ip
+//     var url =req.originalUrl
+//     console.log(`${time} ${ip} ${url}`);
+//     next()
+// }
+
+  app.use( assignmentMW )
 
 app.use('/', route);
 
